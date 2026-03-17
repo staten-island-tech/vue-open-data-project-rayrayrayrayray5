@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div>
+    <h2>{{ scores.school_name }}</h2>
+    <h2>{{ scores.sat_math_avg_score }}</h2>
+    <h2>{{ scores.sat_writing_avg_score }}</h2>
+  </div>
 </template>
 
 <script>
