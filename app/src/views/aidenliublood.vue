@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h2>{{ scores }}</h2>
+    <h2 v-for="score in scores">{{ score.school_name }}</h2>
   </div>
 </template>
 
-<script>
+<script setup>
 import { onMounted, ref } from 'vue'
 const scores = ref({})
 async function getScores() {

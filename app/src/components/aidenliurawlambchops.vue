@@ -1,6 +1,6 @@
 <template>
   <router-link :to="satPath" class="card">
-    <h2>{{ scores }}</h2>
+    <h2>{{ school.school_name }}</h2>
   </router-link>
 </template>
 
@@ -13,7 +13,7 @@ const props = defineProps({
   },
 })
 const satPath = computed(() => {
-  return `/${props.scores.name}`
+  return `/${props.scores.school_name}`
 })
 </script>
 
