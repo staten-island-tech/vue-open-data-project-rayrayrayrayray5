@@ -1,7 +1,10 @@
 <template>
-  <router-link :to="satPath" class="card">
+  <div class="card">
     <h2>{{ scores.school_name }}</h2>
-  </router-link>
+    <h2>Math: {{ scores.sat_math_avg_score }}</h2>
+    <h2>Reading: {{ scores.sat_critical_reading_avg_score }}</h2>
+    <h2>Writing: {{ scores.sat_writing_avg_score }}</h2>
+  </div>
 </template>
 
 <script setup>

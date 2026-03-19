@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AidenLiu v-for="score in scores">{{ score.school_name }}</AidenLiu>
+    <AidenLiu v-for="score in scores" :key="score.dbn" :scores="score"></AidenLiu>
   </div>
 </template>
 
@@ -11,6 +11,7 @@ const scores = ref([])
 async function getScores() {
   const response = await fetch('https://data.cityofnewyork.us/resource/f9bf-2cp4.json')
   const data = await response.json()
+  console.log(data)
   scores.value = data
 }
 onMounted(() => {
