@@ -1,19 +1,15 @@
 <template>
   <router-link :to="satPath" class="card">
-    <h2>{{ school.school_name }}</h2>
+    <h2>{{ scores.school_name }}</h2>
   </router-link>
 </template>
 
 <script setup>
-import { computed } from 'vue'
 const props = defineProps({
   scores: {
     type: Object,
     required: true,
   },
-})
-const satPath = computed(() => {
-  return `/${props.scores.school_name}`
 })
 </script>
 
