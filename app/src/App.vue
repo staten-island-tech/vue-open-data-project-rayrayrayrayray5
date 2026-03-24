@@ -1,14 +1,13 @@
 <template>
-  <router-view></router-view>
+  <router-view>
+    <div style="height: 400px">
+      <BarChart />
+    </div>
+  </router-view>
 </template>
 
-<script>
-import BarChart from '@/components/aidenliugraph.vue'
-
-export default {
-  name: 'App',
-  components: { BarChart },
-}
+<script setup>
+import BarChart from '@/components/BarChart.vue'
 </script>
 
 <style scoped></style>
