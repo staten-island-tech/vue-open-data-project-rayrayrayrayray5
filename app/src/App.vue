@@ -1,13 +1,7 @@
 <template>
-  <router-view>
-    <div style="height: 400px">
-      <BarChart />
-    </div>
-  </router-view>
+  <router-view> </router-view>
 </template>
 
-<script setup>
-import BarChart from '@/components/BarChart.vue'
-</script>
+<script setup></script>
 
 <style scoped></style>
