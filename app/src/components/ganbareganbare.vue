@@ -1,23 +1,57 @@
 <template>
-  <div>
-    <SatChart :scores="scores" />
-
-    <AidenLiu v-for="score in scores" :key="score.dbn" :scores="score" />
-  </div>
+  <Bar :data="chartData" :options="chartOptions" />
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
-import AidenLiu from '@/components/aidenliurawlambchops.vue'
-import SatChart from '@/components/SatChart.vue'
+import { computed } from 'vue'
+import { Bar } from 'vue-chartjs'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js'
 
-const scores = ref([])
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-async function getScores() {
-  const response = await fetch('https://data.cityofnewyork.us/resource/f9bf-2cp4.json')
-  const data = await response.json()
-  scores.value = data
+const props = defineProps({
+  scores: Array,
+})
+
+const chartData = computed(() => {
+  return {
+    labels: props.scores.slice(0, 20).map((liu) => liu.school_name),
+    datasets: [
+      {
+        label: 'Math',
+        data: props.scores.slice(0, 20).map((liu) => Number(liu.sat_math_avg_score)),
+        backgroundColor: 'red',
+      },
+      {
+        label: 'Reading',
+        data: props.scores.slice(0, 20).map((liu) => Number(liu.sat_critical_reading_avg_score)),
+        backgroundColor: 'blue',
+      },
+      {
+        label: 'Writing',
+        data: props.scores.slice(0, 20).map((liu) => Number(liu.sat_writing_avg_score)),
+        backgroundColor: 'green',
+      },
+    ],
+  }
+})
+
+const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
 }
-
-onMounted(getScores)
 </script>
+
+<style scoped>
+canvas {
+  max-height: 400px;
+}
+</style>
