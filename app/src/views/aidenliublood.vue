@@ -6,19 +6,20 @@
       placeholder="Search For Schools"
       class="aidenliusearchbox"
     />
-    <SatChart :scores="filter" />
+    <SatChart :scores="filter" :key="filter.length" />
 
-    <AidenLiu v-for="score in scores" :key="score.dbn" :scores="score" />
+    <AidenLiu v-for="score in filter" :key="score.dbn" :score="score" />
   </div>
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import { computed } from 'vue'
 import AidenLiu from '@/components/aidenliurawlambchops.vue'
 import SatChart from '@/components/ganbareganbare.vue'
-
 const scores = ref([])
 const search = ref('')
+
 function searchAidenLiu(gambare) {
   search.value = gambare.target.value
 }

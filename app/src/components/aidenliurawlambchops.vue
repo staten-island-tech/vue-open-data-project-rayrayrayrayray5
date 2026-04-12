@@ -9,7 +9,7 @@
 
 <script setup>
 const props = defineProps({
-  scores: {
+  score: {
     type: Object,
     required: true,
   },
